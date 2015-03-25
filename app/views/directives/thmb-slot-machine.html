@@ -1,5 +1,10 @@
-<div class="slot-container" ng-repeat="slot in thmbSlots">
-  <div class="slot-row" ng-repeat="row in slot">
-    {{row.name}}
-  </div>
-</div>
+<!-- Slot Machine Window Container -->
+<thmb-slot-container class="slot-container" ng-repeat="slot in thmbSlots">
+  <thmb-slot-row class="slot-row" ng-repeat="row in slot">
+    <span class="slot-row-label">{{row.name}}</span>
+  </thmb-slot-row>
+</thmb-slot-container>
+<!-- End Slot Machine Window Container -->
+
+<!-- Button to Trigger Slot Machine -->
+<button class="slot-machine-button" ng-click="play()">Play!</button>

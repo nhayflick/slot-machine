@@ -14,6 +14,7 @@ body {
 
 /* Custom page header */
 .header {
+  display: block;
   border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
@@ -76,4 +77,40 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/*Slot Machine Styles*/
+thmb-slot-container {
+  position: relative;
+  display: inline-block;
+  width: 33%;
+  height: 0;
+  padding-bottom: 33%;
+  border: 1px solid black;
+}
+
+thmb-slot-row {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+thmb-slot-row.slide-by {
+  top: 100%;
+  transition: 1s ease-in-out;
+}
+
+thmb-slot-row > .slot-row-label {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
+}
+
+.slot-machine-button {
+  width: 100%;
+  text-align: center;
 }
