@@ -9,10 +9,11 @@
 angular.module('slotMachineApp')
   .directive('thmbSlotMachine', function () {
     return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the thmbSlotMachine directive');
+      templateUrl: 'views/directives/thmb-slot-machine.html',
+      restrict: 'EA',
+      // require: '^ngModel',
+      scope: {
+        thmbSlots: '='
       }
     };
   });

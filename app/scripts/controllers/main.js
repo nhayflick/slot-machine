@@ -9,9 +9,36 @@
  */
 angular.module('slotMachineApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.slots = [
+      [{
+        name:'Coffee',
+        type: 1
+      }, {
+        name:'Tea',
+        type: 2
+      }, {
+        name:'Espresso',
+        type: 3
+      }],
+      [{
+        name:'Coffee',
+        type: 1
+      }, {
+        name:'Tea',
+        type: 2
+      }, {
+        name:'Espresso',
+        type: 3
+      }],
+      [{
+        name:'Coffee',
+        type: 1
+      }, {
+        name:'Tea',
+        type: 2
+      }, {
+        name:'Espresso',
+        type: 3
+      }]
     ];
   });
