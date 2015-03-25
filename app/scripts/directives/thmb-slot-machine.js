@@ -16,48 +16,64 @@ angular.module('slotMachineApp')
         thmbSlots: '='
       },
       // TODO: check this
-      controller: function ($scope, $animate) {
+      controller: function ($scope, $animate, $timeout) {
         // TODO: ensure persistence of results from spin to spin
-        var results;
+        var results = [0,0,0];
         var animations = [];
 
         function play () {
-          results = [];
-          for (var i = 2; i < $scope.thmbSlots.length; i++) {
+          for (var i = 0; i < $scope.thmbSlots.length; i++) {
+            if (results[i]) {
+              console.log(results[i]);
+              clearAnimation(i + 1, results[i], true);
+            }
             var result = Math.floor(Math.random() * 3) + 1
-            results.push(result);
+            results[i] = result;
             spinSlot(i + 1, result);
           }
         }
 
         function spinSlot (slot, result) {
           // TODO: Attempt to shorten this
-          var base = 30 + result;
+          var base = 7 + result;
+          var spins = 0;
           (function rotateOnce() {
-            console.log('rotate');
-            var promise = performAnimation(slot, base % 3 + 1);
+            console.log('rotate: ' + slot + ' base: '  + spins);
+            var promise = performAnimation(slot, spins % 3 + 1, spins > base);
             promise.then( function() {
-              clearAnimation(slot, base % 3 + 1);
-              if (!base--) {return false};
-              rotateOnce();
+              clearAnimation(slot, spins % 3 + 1, false);
+              // Allow digest cycle needs to finish before further
+              // $animate calls
+              if (spins++ > base) {
+                return false;
+              };
+              $timeout(function(){
+                rotateOnce();
+              });
             });
           })();
         }
 
-        function performAnimation (slot, row) {
-          console.log('perform');
+        function performAnimation (slot, row, final) {
+          // TODO: extract this selector for efficiency
           var querySelector = document.querySelector( 'thmb-slot-container:nth-child(' + slot + ') > thmb-slot-row:nth-child(' + row  + ')' );
           var $el = angular.element(querySelector);
-          // $el.removeClass('slide-by');
-          // console.log($animate.addClass($el, 'slide-by'));
+          var cssName = final ? 'slide-in' : 'slide-by';
+          if (final) {
+            console.log(results[slot-1]);
+            console.log($scope.thmbSlots[slot-1][row-1].name);
+          }
           // Returns a promise that is resolved once the animation is finished
-          return $animate.addClass($el, 'slide-by');
+          return $animate.addClass($el, cssName);
         }
 
-        function clearAnimation (slot, row) {
+        function clearAnimation (slot, row, final) {
+          // TODO: extract this selector for efficiency
           var querySelector = document.querySelector( 'thmb-slot-container:nth-child(' + slot + ') > thmb-slot-row:nth-child(' + row  + ')' );
           var $el = angular.element(querySelector);
-          $el.removeClass('slide-by');
+          console.log($el);
+          var cssName = final ? 'slide-in' : 'slide-by';
+          $el.removeClass(cssName);
         }
 
         $scope.play = play;
