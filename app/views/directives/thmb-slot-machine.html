@@ -1,10 +1,13 @@
-<!-- Slot Machine Window Container -->
-<thmb-slot-container class="slot-container" ng-repeat="slot in thmbSlots">
-  <thmb-slot-row class="slot-row" ng-repeat="row in slot">
-    <span class="slot-row-label">{{row.name}}</span>
-  </thmb-slot-row>
-</thmb-slot-container>
-<!-- End Slot Machine Window Container -->
+<h4 ng-class="{jumbo: winner&&!animating}">{{message || 'Good Luck!'}}</h4>
+<section>
+  <!-- Slot Machine Window Container -->
+  <thmb-slot-container class="slot-container" ng-repeat="slot in thmbSlots">
+    <thmb-slot-row class="slot-row" ng-class="{'slide-in': !$index}" ng-repeat="row in slot" ng-style="{'background-image': 'url(' + row.imageUrl + ')'}">
+      <span class="slot-row-label">{{row.name}}</span>
+    </thmb-slot-row>
+  </thmb-slot-container>
+  <!-- End Slot Machine Window Container -->
 
-<!-- Button to Trigger Slot Machine -->
-<button class="slot-machine-button" ng-click="play()">Play!</button>
+  <!-- Button to Trigger Slot Machine -->
+  <button class="slot-machine-button" ng-click="play()" ng-disabled="animating">{{animating ? 'Spinning...' : 'Play!'}}</button>
+</section>

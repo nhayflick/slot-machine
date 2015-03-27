@@ -8,37 +8,48 @@
  * Controller of the slotMachineApp
  */
 angular.module('slotMachineApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $rootScope) {
     $scope.slots = [
       [{
         name:'Coffee',
-        type: 1
+        imageUrl: '/images/coffee-maker.jpg',
+        type: 'coffee'
       }, {
         name:'Tea',
-        type: 2
+        imageUrl: '/images/tea-pot.jpg',
+        type: 'tea'
       }, {
         name:'Espresso',
-        type: 3
+        imageUrl: '/images/espresso-machine.jpg',
+        type: 'espresso'
       }],
       [{
         name:'Coffee',
-        type: 1
+        imageUrl: '/images/coffee-filter.jpg',
+        type: 'coffee'
       }, {
         name:'Tea',
-        type: 2
+        imageUrl: '/images/tea-strainer.jpg',
+        type: 'tea'
       }, {
         name:'Espresso',
-        type: 3
+        imageUrl: '/images/espresso-tamper.jpg',
+        type: 'espresso'
       }],
       [{
         name:'Coffee',
-        type: 1
+        imageUrl: '/images/coffee-grounds.jpg',
+        type: 'coffee'
       }, {
         name:'Tea',
-        type: 2
+        imageUrl: '/images/tea-leaf.jpg',
+        type: 'tea'
       }, {
         name:'Espresso',
-        type: 3
+        imageUrl: '/images/espresso-grounds.jpg',
+        type: 'espresso'
       }]
     ];
+    $rootScope.animating;
+    $rootScope.winner;
   });
