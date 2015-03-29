@@ -1,11 +1,11 @@
 <h4 class="text-center" ng-class="{jumbo: winner&&!animating}">{{message || 'Match any 3 categories to win... Good Luck!'}}</h4>
 <section>
   <!-- Slot Machine Window Container -->
-  <thmb-slot-container class="slot-container" ng-repeat="slot in thmbSlots">
-    <thmb-slot-row class="slot-row" ng-class="{'slide-in': !$index}" ng-repeat="row in slot" ng-style="{'background-image': 'url(' + row.imageUrl + ')'}">
+  <div class="thmb-slot-container" ng-repeat="slot in thmbSlots">
+    <div class="thmb-slot-row" ng-class="{'slide-in': !$index}" ng-repeat="row in slot" ng-style="{'background-image': 'url(' + row.imageUrl + ')'}">
       <span class="slot-row-label">{{row.name}}</span>
-    </thmb-slot-row>
-  </thmb-slot-container>
+    </div>
+  </div>
   <!-- End Slot Machine Window Container -->
 
   <!-- Button to Trigger Slot Machine -->

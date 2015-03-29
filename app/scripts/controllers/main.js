@@ -8,7 +8,23 @@
  * Controller of the slotMachineApp
  */
 angular.module('slotMachineApp')
-  .controller('MainCtrl', function ($scope, $rootScope) {
+  .controller('MainCtrl', function ($scope, $rootScope, localStorageService) {
+
+    function clearPrizeStash() {
+      $scope.prizeStash = {};
+    }
+    
+    $scope.clearPrizeStash = clearPrizeStash;
+    $scope.prizeStash = localStorageService.get('prizes') || {};
+    $scope.$watch('prizeStash', function () {
+      localStorageService.set('prizes', $scope.prizeStash);
+    }, true);
+    // A data object representing slots and rows
+    // for the thmb-slot-machine directive.
+
+    // The slot machine is agnostic to the # of rows
+    // and # of columns that are fed in.
+
     $scope.slots = [
       [{
         name:'Coffee',
@@ -50,9 +66,10 @@ angular.module('slotMachineApp')
         type: 'espresso'
       }]
     ];
-    // Define these props on rootscope so other views
+
+
+    // Define these props on $rootscope so other views
     // can access them
     $rootScope.animating = false;
     $rootScope.winner = false;
-    $scope.prizeStash = {};
   });

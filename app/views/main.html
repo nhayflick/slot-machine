@@ -3,5 +3,8 @@
   <div ng-repeat="(name, item) in prizeStash">
     <h4 ng-if="$index == 0">Your Prizes:</h4>
     {{name}} x {{item.quantity}}
+    <div>
+      <button class="clear-prizes-button" ng-click="clearPrizeStash()" ng-if="$last">Clear Prizes</button>
+    </div>
   </div>
 </div>

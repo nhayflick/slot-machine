@@ -12,19 +12,18 @@ angular
   .module('slotMachineApp', [
     'ngAnimate',
     'ngRoute',
-    'ngTouch'
+    'ngTouch',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', 'localStorageServiceProvider', function ($routeProvider, localStorageServiceProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+    // Set local storage App key
+    localStorageServiceProvider.setPrefix('thmb');
+  }]);

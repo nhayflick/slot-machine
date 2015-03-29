@@ -12,11 +12,6 @@ body.winner {
   /*color: black;*/
 }
 
-.footer {
-  text-align: center;
-  color: #01579B;
-}
-
 h1 {
   color: #01579B;
 }
@@ -30,6 +25,29 @@ h4.jumbo {
   color: #01579B;
 }
 
+button {
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+button:hover {
+   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.26);
+}
+button:disabled {
+  background-color: gray;
+  opacity: .5;
+}
+
+.footer {
+  text-align: center;
+  color: #01579B;
+}
+
+
 .container {
   max-width: 768px;
   margin: auto;
@@ -40,7 +58,7 @@ h4.jumbo {
 }
 
 /*Slot Machine Styles*/
-thmb-slot-container {
+.thmb-slot-container {
   position: relative;
   display: inline-block;
   width: 31%;
@@ -51,7 +69,7 @@ thmb-slot-container {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-thmb-slot-row {
+.thmb-slot-row {
   position: absolute;
   top: -100%;
   left: 0;
@@ -61,18 +79,18 @@ thmb-slot-row {
   background-repeat: none;
 }
 
-thmb-slot-row.slide-by {
+.thmb-slot-row.slide-by {
   top: 100%;
   transition: .3s ease-in-out;
 }
 
-thmb-slot-row.slide-in {
+.thmb-slot-row.slide-in {
   top: 0%;
   transition: 1s ease-in-out;
 }
 
 
-thmb-slot-row > .slot-row-label {
+.thmb-slot-row > .slot-row-label {
   bottom: 0;
   left: 0;
   right: 0;
@@ -82,34 +100,30 @@ thmb-slot-row > .slot-row-label {
   color: white;
 }
 
-thmb-slot-row:nth-child(1) > .slot-row-label {
+.thmb-slot-row:nth-child(1) > .slot-row-label {
   background-color: #6D4C41;
 }
 
-thmb-slot-row:nth-child(2) > .slot-row-label {
+.thmb-slot-row:nth-child(2) > .slot-row-label {
   background-color: #9E9E9E;
 }
 
-thmb-slot-row:nth-child(3) > .slot-row-label {
+.thmb-slot-row:nth-child(3) > .slot-row-label {
   background-color: #006064;
 }
 
 .slot-machine-button {
   width: 80%;
   margin: 20px 10%;
-  padding: 8px;
-  border-radius: 4px;
   background-color: #009688;
   color: white;
-  text-align: center;
-  font-size: 16px;
-  border: none;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-.slot-machine-button:disabled {
-  opacity: .5;
+.clear-prizes-button {
+  margin: 20px;
+  background-color: white;
 }
+
 
 .prize-stash {
   text-align: center;
