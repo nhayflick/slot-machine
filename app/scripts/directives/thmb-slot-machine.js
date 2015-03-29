@@ -15,7 +15,8 @@ angular.module('slotMachineApp')
       scope: {
         thmbSlots: '=',
         animating: '=',
-        winner: '='
+        winner: '=',
+        prizeStash: '='
       },
       // TODO: check this
       controller: function ($scope, $rootScope, $animate, $timeout, $q) {
@@ -42,7 +43,16 @@ angular.module('slotMachineApp')
           $q.all(animationPromises).then(function () {
             $rootScope.animating = false;
             if ($rootScope.winner) {
-              $scope.message = 'You win one ' + $scope.thmbSlots[0][results[0] - 1].name + '!';
+              var prizeName = $scope.thmbSlots[0][results[0] - 1].name;
+              $scope.message = 'You win one ' + prizeName + '!';
+              // Store prize in global prize stash
+              if ($scope.prizeStash[prizeName]) {
+                $scope.prizeStash[prizeName].quantity += 1;
+              } else {
+                $scope.prizeStash[prizeName] = {
+                  quantity: 1
+                }
+              }
             } else {
               $scope.message = 'No caffeine for you =(... Try Again!';
             }
@@ -54,7 +64,7 @@ angular.module('slotMachineApp')
         function spinSlot (slot, result) {
           // TODO: Attempt to shorten this
           // TODO: Why does only 1/4/7/10 work here?
-          var base =  3 + result;
+          var base =  (3 * slot) + result;
           var spins = 0;
           var deferred = $q.defer();
           (function rotateOnce() {

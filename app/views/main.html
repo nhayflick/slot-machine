@@ -1,3 +1,7 @@
-<div class="jumbotron">
-  <thmb-slot-machine thmb-slots="slots" winner="winner" animating="animating"></thmb-slot-machine>
+<thmb-slot-machine thmb-slots="slots" winner="winner" animating="animating" prize-stash="prizeStash"></thmb-slot-machine>
+<div class="prize-stash">
+  <div ng-repeat="(name, item) in prizeStash">
+    <h4 ng-if="$index == 0">Your Prizes:</h4>
+    {{name}} x {{item.quantity}}
+  </div>
 </div>

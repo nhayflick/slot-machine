@@ -1,93 +1,54 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background-color: white;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  -webkit-transition: background-color 200ms linear;
+  -webkit-transition: color 200ms linear;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
+body.winner {
+  background-color: #80DEEA;
+  /*color: black;*/
+}
+
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  display: block;
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  color: #01579B;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+h1 {
+  color: #01579B;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 400;
+}
+
+h4.jumbo {
+  font-size: 42px;
+  color: #01579B;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /*Slot Machine Styles*/
 thmb-slot-container {
   position: relative;
   display: inline-block;
-  width: 33%;
+  width: 31%;
   height: 0;
-  padding-bottom: 33%;
+  padding-bottom: 31%;
+  margin: 1%;
   overflow: hidden;
-  border: 1px solid black;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 thmb-slot-row {
@@ -96,6 +57,8 @@ thmb-slot-row {
   left: 0;
   right: 0;
   height: 100%;
+  background-size: cover;
+  background-repeat: none;
 }
 
 thmb-slot-row.slide-by {
@@ -113,11 +76,41 @@ thmb-slot-row > .slot-row-label {
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 8px;
   position: absolute;
   text-align: center;
+  color: white;
+}
+
+thmb-slot-row:nth-child(1) > .slot-row-label {
+  background-color: #6D4C41;
+}
+
+thmb-slot-row:nth-child(2) > .slot-row-label {
+  background-color: #9E9E9E;
+}
+
+thmb-slot-row:nth-child(3) > .slot-row-label {
+  background-color: #006064;
 }
 
 .slot-machine-button {
-  width: 100%;
+  width: 80%;
+  margin: 20px 10%;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #009688;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.slot-machine-button:disabled {
+  opacity: .5;
+}
+
+.prize-stash {
   text-align: center;
 }

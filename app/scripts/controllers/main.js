@@ -50,6 +50,9 @@ angular.module('slotMachineApp')
         type: 'espresso'
       }]
     ];
-    $rootScope.animating;
-    $rootScope.winner;
+    // Define these props on rootscope so other views
+    // can access them
+    $rootScope.animating = false;
+    $rootScope.winner = false;
+    $scope.prizeStash = {};
   });
